@@ -130,12 +130,14 @@ async function loadAPIs(category = null) {
         apis.forEach(api => {
             const apiCard = document.createElement('div');
             apiCard.className = 'bg-white rounded-lg shadow-sm hover:shadow-md transition-all duration-300 cursor-pointer card-hover';
+            const authBadge = api.auth_required ? 'bg-red-100 text-red-800' : 'bg-green-100 text-green-800';
+            const authText = api.auth_required ? 'API Key Required' : 'No Auth';
             apiCard.innerHTML = `
                 <div class="p-6">
                     <div class="flex justify-between items-start mb-4">
                         <h3 class="text-lg font-semibold text-gray-900">${api.name}</h3>
-                        <span class="px-3 py-1 bg-${api.auth_required ? 'red' : 'green'}-100 text-${api.auth_required ? 'red' : 'green'}-800 rounded-full text-xs font-medium">
-                            ${api.auth_required ? 'API Key Required' : 'No Auth'}
+                        <span class="px-3 py-1 ${authBadge} rounded-full text-xs font-medium">
+                            ${authText}
                         </span>
                     </div>
                     <p class="text-gray-600 mb-4 line-clamp-3">${api.description || 'No description available'}</p>
@@ -206,12 +208,14 @@ async function performSearch() {
         apis.forEach(api => {
             const apiCard = document.createElement('div');
             apiCard.className = 'bg-white rounded-lg shadow-sm hover:shadow-md transition-all duration-300 cursor-pointer card-hover';
+            const authBadge = api.auth_required ? 'bg-red-100 text-red-800' : 'bg-green-100 text-green-800';
+            const authText = api.auth_required ? 'API Key Required' : 'No Auth';
             apiCard.innerHTML = `
                 <div class="p-6">
                     <div class="flex justify-between items-start mb-4">
                         <h3 class="text-lg font-semibold text-gray-900">${api.name}</h3>
-                        <span class="px-3 py-1 bg-${api.auth_required ? 'red' : 'green'}-100 text-${api.auth_required ? 'red' : 'green'}-800 rounded-full text-xs font-medium">
-                            ${api.auth_required ? 'API Key Required' : 'No Auth'}
+                        <span class="px-3 py-1 ${authBadge} rounded-full text-xs font-medium">
+                            ${authText}
                         </span>
                     </div>
                     <p class="text-gray-600 mb-4 line-clamp-3">${api.description || 'No description available'}</p>

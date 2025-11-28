@@ -237,6 +237,10 @@ DB_NAME=your-database
 
 **GitHub**: https://github.com/jinyang756/api-aggregator
 
+**Patreon**: https://www.patreon.com/cw/darkoarea
+
 ---
 
 **⭐ 如果你觉得这个项目有帮助，请给个 Star！**
+
+**💪 想要支持项目开发？欢迎在 Patreon 上成为赞助者！**
