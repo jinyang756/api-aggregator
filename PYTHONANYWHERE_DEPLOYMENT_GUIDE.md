@@ -13,6 +13,16 @@ MySQL 密码: Aa123456..
 
 ## ⚡ 5 分钟快速部署
 
+### 准备工作：创建 Web 应用（如未创建）
+
+在 PythonAnywhere 首页：
+1. 点击 **"Add a new web app"**
+2. 选择 **"Manual configuration (including virtualenvs)"**
+3. 选择 **Python 3.10**
+4. 点击创建
+
+> 详细步骤见：`PYTHONANYWHERE_WEB_APP_SETUP.md`
+
 ### 步骤 1️⃣：在 PythonAnywhere Bash Console 执行
 
 ```bash
