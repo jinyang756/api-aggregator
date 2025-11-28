@@ -170,6 +170,42 @@ def init_sample_data():
         return jsonify({'error': str(e)}), 500
 
 
+@app.route('/api/update_data', methods=['POST'])
+def update_data():
+    """
+    更新 API 数据的端点
+    需要在 HTTP Headers 中提供正确的 X-API-Key
+    用于 cron-job.org 等外部服务定时更新
+    """
+    # 验证 API 密钥
+    api_key = request.headers.get('X-API-Key')
+    expected_key = os.environ.get('UPDATE_API_KEY', 'default-update-key')
+    
+    if api_key != expected_key:
+        return jsonify({
+            'error': 'Unauthorized - Invalid API key',
+            'success': False
+        }), 401
+    
+    try:
+        # 重新初始化表和数据
+        db.init_tables()
+        
+        return jsonify({
+            'message': 'Data updated successfully',
+            'success': True,
+            'timestamp': datetime.now().isoformat(),
+            'database_type': db.db_type
+        }), 200
+        
+    except Exception as e:
+        return jsonify({
+            'error': str(e),
+            'success': False,
+            'timestamp': datetime.now().isoformat()
+        }), 500
+
+
 @app.route('/api/health')
 def health_check():
     """健康检查"""
